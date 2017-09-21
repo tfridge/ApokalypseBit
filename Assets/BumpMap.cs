@@ -63,7 +63,7 @@ public class BumpMap : MonoBehaviour {
         {
             for(int bumpL = 0; bumpL < bumpLength; bumpL++)
             {
-                bumpCheck[bumpW, bumpL] = bumpDepth[count];
+                //bumpCheck[bumpW, bumpL] = bumpDepth[count];
                 count++;
             }
         }

@@ -242,6 +242,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114501892855381912, guid: af9fecfd0d57bc844a7a1e2cb4662338,
+        type: 2}
+      propertyPath: bumpMap
+      value: 
+      objectReference: {fileID: 114379828416960708, guid: 86398a40e1a5b8a4698c8f2194249a7a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af9fecfd0d57bc844a7a1e2cb4662338, type: 2}
   m_IsPrefabParent: 0
@@ -448,9 +454,9 @@ MonoBehaviour:
   initialGridCount: 0
   myRotations: 000000000000000000000000
   myPitches: 000000000000000000000000
-  lengths: 010000000200000003000000
-  widths: 010000000200000003000000
-  heights: 010000000200000003000000
+  lengths: 010000000500000003000000
+  widths: 010000000500000003000000
+  heights: 010000000100000003000000
 --- !u!4 &1329527102
 Transform:
   m_ObjectHideFlags: 0
