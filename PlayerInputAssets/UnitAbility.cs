@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitAbility : MonoBehaviour {
-
+    [SerializeField]
+    [Range(0,10)]
+    private int abilityIndex;
     [SerializeField]
     private string myName;
     [SerializeField]
@@ -40,6 +42,10 @@ public class UnitAbility : MonoBehaviour {
         myConstraint = new ActionConstraint(myName, tileConstraint, turnConstraint, losType, aoeType);
     }
 	
+    public int getMyAbilityIndex()
+    {
+        return abilityIndex;
+    }
 	
     /// <summary>
     /// Called after this ability is initialized.

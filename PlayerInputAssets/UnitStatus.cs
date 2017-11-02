@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(UnitHealth))]
+[RequireComponent(typeof(UnitAbility))]
 public class UnitStatus : MonoBehaviour {
 
     private Tile currentTile;
-    private LinkedList<ActionConstraint> myConstraints;
-    private LinkedList<UnitAbility> myAbilities;
-    private LinkedList<AbilityUI> myUI;
+    private UnitAbility[] myAbilities;
+    private ActionConstraint[] myConstraints;
+    private ActionConstraint overrideConstraint;
+    private UnitHealth myHealth;
 
     ///
     /// The following methods are used to generate and handle the constraint/ability lists.
@@ -18,87 +21,61 @@ public class UnitStatus : MonoBehaviour {
     /// </summary>
 	public void initializeUnitAbilities()
     {
-        myConstraints = new LinkedList<ActionConstraint>();
-        myAbilities = new LinkedList<UnitAbility>();
-        myUI = new LinkedList<AbilityUI>();
-        foreach(UnitAbility ability in GetComponents<UnitAbility>())
+        myHealth = GetComponent<UnitHealth>();
+        UnitAbility[] newAbilities = GetComponents<UnitAbility>();
+        myAbilities = new UnitAbility[newAbilities.GetLength(0)];
+        foreach (UnitAbility ability in newAbilities)
         {
-            newAbility(ability);
-            ability.initialzeMyConstraint();
-            newConstraint(ability.getMyConstraint());
-            newAbilityUI(ability.getMyUI());
-            Debug.Log(ability);
+            myAbilities[ability.getMyAbilityIndex()] = ability;
+            Debug.Log(ability.getMyAbilityIndex());
         }
     }
 
     /// <summary>
-    /// Called when a unit has a new status.
+    /// Called to get a unit's unit abilities.
     /// </summary>
-    public void newAbility(UnitAbility newAbility)
+    public UnitAbility[] getMyAbilities()
     {
-        myAbilities.AddFirst(newAbility);
+        return myAbilities;
     }
 
     /// <summary>
-    /// Called when an ability is permanently removed from a unit's status.
+    /// Called to retrieve the health of this unit.
     /// </summary>
-    public void removeAbility(UnitAbility oldAbility)
+    public int getMyHealth()
     {
-        foreach (UnitAbility ability in myAbilities)
-        {
-            if (ability.Equals(oldAbility))
-            {
-                myAbilities.Remove(ability);
-            }
-        }
+        return myHealth.getMyHealth();
     }
 
     /// <summary>
-    /// Called when a unit has a new status.
+    /// Called to damage a unit.
     /// </summary>
-    public void newConstraint(ActionConstraint newConstraint)
+    public void damageUnit(int damage)
     {
-        myConstraints.AddFirst(newConstraint);
+        myHealth.damageUnit(damage);
     }
 
     /// <summary>
-    /// Called when an ability is permanently removed from a unit's status.
+    /// Called to heal a unit.
     /// </summary>
-    public void removeConstraint(ActionConstraint newConstraint)
+    public void healUnit(int heal)
     {
-        foreach(ActionConstraint act in myConstraints)
-        {
-            if (act.Equals(newConstraint))
-            {
-                myConstraints.Remove(act);
-            }
-        }
+        myHealth.healUnit(heal);
     }
 
     /// <summary>
-    /// Called when a unit ability's constraints are needed.
+    /// Called to override a unit's status.
     /// </summary>
-    public ActionConstraint getConstraint(UnitAbility abilityCheck)
+    public void setOverrideConstraint(ActionConstraint overrideC)
     {
-        ActionConstraint newConstraint = abilityCheck.getMyConstraint();
-        foreach (ActionConstraint act in myConstraints)
-        {
-            if (act.Equals(newConstraint))
-            {
-                return act;
-            }
-        }
-        return null;
+        overrideConstraint = overrideC;
     }
 
-    public void newAbilityUI(AbilityUI newUI)
+    /// <summary>
+    /// Called to clear a unit's status override.
+    /// </summary>
+    public void clearOverrideConstraint()
     {
-        myUI.AddFirst(newUI);
+        overrideConstraint = null;
     }
-
-    public LinkedList<ActionConstraint> getConstraints()
-    {
-        return myConstraints;
-    }
-
 }

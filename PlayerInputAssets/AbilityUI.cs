@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AbilityUI : MonoBehaviour {
 
+    /// COOPER PUTS HIS STUFF HERE.
+
+
+
 	// Use this for initialization
 	void Start () {
 		

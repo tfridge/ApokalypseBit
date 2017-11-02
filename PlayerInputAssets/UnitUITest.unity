@@ -253,6 +253,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114333885038643834, guid: 8be50f5d2b0059c4486fdcae49fb879e,
+        type: 2}
+      propertyPath: myDescription
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114643210323806016, guid: 8be50f5d2b0059c4486fdcae49fb879e,
+        type: 2}
+      propertyPath: abilityIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114333885038643834, guid: 8be50f5d2b0059c4486fdcae49fb879e,
+        type: 2}
+      propertyPath: abilityIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114995334871402258, guid: 8be50f5d2b0059c4486fdcae49fb879e,
+        type: 2}
+      propertyPath: abilityIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114995334871402258, guid: 8be50f5d2b0059c4486fdcae49fb879e,
+        type: 2}
+      propertyPath: losType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114995334871402258, guid: 8be50f5d2b0059c4486fdcae49fb879e,
+        type: 2}
+      propertyPath: aoeType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8be50f5d2b0059c4486fdcae49fb879e, type: 2}
   m_IsPrefabParent: 0
@@ -302,7 +332,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 802993765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1238998700}
@@ -632,6 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c666afe95c6f71a418ace32cac248660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityIndex: 2
   myName: Super Attack
   tileConstraint: 2
   turnConstraint: 2
@@ -652,6 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c666afe95c6f71a418ace32cac248660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityIndex: 1
   myName: Attack
   tileConstraint: 5
   turnConstraint: 0
@@ -672,11 +704,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c666afe95c6f71a418ace32cac248660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityIndex: 0
   myName: Move
   tileConstraint: 10
   turnConstraint: 0
-  losType: 0
-  aoeType: 0
+  losType: 1
+  aoeType: 1
   myUI: {fileID: 0}
   myVisuals: {fileID: 0}
   myDescription: 
